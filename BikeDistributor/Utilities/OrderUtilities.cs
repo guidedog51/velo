@@ -28,9 +28,9 @@ namespace BikeDistributor.Utilities
         /// </summary>
         /// <param name="lineItem"></param>
         /// <returns></returns>
-        public decimal GetDiscount(ILineItem lineItem)
+        public decimal GetVolumeDiscount(ILineItem lineItem)
         {
-            var discount = .0M;
+            var discount = 1.0M;
 
             if (Enumerable.Range(0, 1001).Contains(lineItem.Bike.Price) && lineItem.Quantity >= 20)
                 discount = .9M;

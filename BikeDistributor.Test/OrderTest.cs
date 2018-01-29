@@ -39,7 +39,7 @@ namespace BikeDistributor.Test
             //var bike = new Bike { Brand = "Gazelle", Model = "Tour Populair", Price = 1000 };
 
             var lineItem = new LineItem { Bike = Defy, Quantity = 30 };
-            var discount = util.GetDiscount(lineItem);
+            var discount = util.GetVolumeDiscount(lineItem);
 
             Assert.IsNotNull(discount);
             Assert.AreEqual(.9M, discount);
