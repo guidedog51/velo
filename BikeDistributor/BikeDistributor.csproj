@@ -49,9 +49,19 @@
     <Compile Include="Models\Bike.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\LineItem.cs" />
+    <Compile Include="Properties\OrderResourc.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderResourc.resx</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\OrderUtilities.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\OrderResourc.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderResourc.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

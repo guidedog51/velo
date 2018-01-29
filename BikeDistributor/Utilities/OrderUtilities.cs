@@ -32,13 +32,13 @@ namespace BikeDistributor.Utilities
         {
             var discount = 1.0M;
 
-            if (Enumerable.Range(0, 1001).Contains(lineItem.Bike.Price) && lineItem.Quantity >= 20)
+            if (Enumerable.Range(0, 1001).Contains((int)lineItem.Bike.Price) && lineItem.Quantity >= 20)
                 discount = .9M;
 
-            if (Enumerable.Range(1001, 4001).Contains(lineItem.Bike.Price) && lineItem.Quantity >= 10)
+            if (Enumerable.Range(1001, 4001).Contains((int)lineItem.Bike.Price) && lineItem.Quantity >= 10)
                 discount = .8M;
 
-            if (Enumerable.Range(5001, 10001).Contains(lineItem.Bike.Price) && lineItem.Quantity >= 5)
+            if (Enumerable.Range(5001, 10001).Contains((int)lineItem.Bike.Price) && lineItem.Quantity >= 5)
                 discount = .8M;
 
             return discount;
@@ -56,5 +56,89 @@ namespace BikeDistributor.Utilities
 
             return rate;
         }
+
+
+        public string GetReceiptText(Order currentOrder)
+        {
+            var totalAmount = 0M;
+            var result = new StringBuilder(string.Format("Order Receipt for {0}{1}", currentOrder.Company.Name, Environment.NewLine));
+            foreach (var line in currentOrder.LineItems)
+            {
+                var thisAmount = 0M;
+                //switch (line.Bike.Price)
+                //{
+                //case Bike.OneThousand:
+                //    if (line.Quantity >= 20)
+                //        thisAmount += line.Quantity * line.Bike.Price * .9d;
+                //    else
+                //        thisAmount += line.Quantity * line.Bike.Price;
+                //    break;
+                //case Bike.TwoThousand:
+                //    if (line.Quantity >= 10)
+                //        thisAmount += line.Quantity * line.Bike.Price * .8d;
+                //    else
+                //        thisAmount += line.Quantity * line.Bike.Price;
+                //    break;
+                //case Bike.FiveThousand:
+                //    if (line.Quantity >= 5)
+                //        thisAmount += line.Quantity * line.Bike.Price * .8d;
+                //    else
+                //        thisAmount += line.Quantity * line.Bike.Price;
+                //    break;
+                //}
+                result.AppendLine(string.Format("\t{0} x {1} {2} = {3}", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
+                totalAmount += thisAmount;
+            }
+            result.AppendLine(string.Format("Sub-Total: {0}", totalAmount.ToString("C")));
+            var tax = totalAmount * GetSalesTaxRate(currentOrder.Company.Address);
+            result.AppendLine(string.Format("Tax: {0}", tax.ToString("C")));
+            result.Append(string.Format("Total: {0}", (totalAmount + tax).ToString("C")));
+            return result.ToString();
+        }
+
+        public string GetReceiptHtml(Order currentOrder)
+        {
+            var totalAmount = 0M;
+            var result = new StringBuilder(string.Format("<html><body><h1>Order Receipt for {0}</h1>", currentOrder.Company.Name));
+            if (currentOrder.LineItems.Any())
+            {
+                result.Append("<ul>");
+                foreach (var line in currentOrder.LineItems)
+                {
+                    var thisAmount = 0M;
+                    //switch (line.Bike.Price)
+                    //{
+                    //    case Bike.OneThousand:
+                    //        if (line.Quantity >= 20)
+                    //            thisAmount += line.Quantity*line.Bike.Price*.9d;
+                    //        else
+                    //            thisAmount += line.Quantity*line.Bike.Price;
+                    //        break;
+                    //    case Bike.TwoThousand:
+                    //        if (line.Quantity >= 10)
+                    //            thisAmount += line.Quantity*line.Bike.Price*.8d;
+                    //        else
+                    //            thisAmount += line.Quantity*line.Bike.Price;
+                    //        break;
+                    //    case Bike.FiveThousand:
+                    //        if (line.Quantity >= 5)
+                    //            thisAmount += line.Quantity*line.Bike.Price*.8d;
+                    //        else
+                    //            thisAmount += line.Quantity*line.Bike.Price;
+                    //        break;
+                    //}
+                    result.Append(string.Format("<li>{0} x {1} {2} = {3}</li>", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
+                    totalAmount += thisAmount;
+                }
+                result.Append("</ul>");
+            }
+            result.Append(string.Format("<h3>Sub-Total: {0}</h3>", totalAmount.ToString("C")));
+            var tax = totalAmount * GetSalesTaxRate(currentOrder.Company.Address);
+            result.Append(string.Format("<h3>Tax: {0}</h3>", tax.ToString("C")));
+            result.Append(string.Format("<h2>Total: {0}</h2>", (totalAmount + tax).ToString("C")));
+            result.Append("</body></html>");
+            return result.ToString();
+        }
+
     }
 }

@@ -4,6 +4,6 @@
     {
         string Brand { get; set; }
         string Model { get; set; }
-        int Price { get; set; }
+        decimal Price { get; set; }
     }
 }
