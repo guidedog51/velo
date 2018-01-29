@@ -52,12 +52,23 @@
   <ItemGroup>
     <Compile Include="OrderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\OrderResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderResource.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BikeDistributor\BikeDistributor.csproj">
       <Project>{4fba25b5-279c-4fd3-a904-ff88bef4a480}</Project>
       <Name>BikeDistributor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\OrderResource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>OrderResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

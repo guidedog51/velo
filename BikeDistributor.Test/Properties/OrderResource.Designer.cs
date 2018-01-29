@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BikeDistributor.Properties {
+namespace BikeDistributor.Test.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace BikeDistributor.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class OrderResourc {
+    internal class OrderResource {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal OrderResourc() {
+        internal OrderResource() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace BikeDistributor.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BikeDistributor.Properties.OrderResourc", typeof(OrderResourc).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("BikeDistributor.Test.Properties.OrderResource", typeof(OrderResource).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,52 +61,34 @@ namespace BikeDistributor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;li&gt;{0} x {1} {2} = {3}&lt;/li&gt;.
-        /// </summary>
-        internal static string LineItemHtml {
-            get {
-                return ResourceManager.GetString("LineItemHtml", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to \t{0} x {1} {2} = {3}.
-        /// </summary>
-        internal static string LineItemText {
-            get {
-                return ResourceManager.GetString("LineItemText", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to &lt;html&gt;
         ///	&lt;body&gt;
-        ///		&lt;h1&gt;Order Receipt for {0}&lt;/h1&gt;
+        ///		&lt;h1&gt;Order Receipt for Anywhere Bike Shop&lt;/h1&gt;
         ///			&lt;ul&gt;
-        ///				{1}
+        ///				&lt;li&gt;1 x Specialized Venge Elite = $2,000.00&lt;/li&gt;
         ///			&lt;/ul&gt;
-        ///		&lt;h3&gt;Sub-Total: {2}&lt;/h3&gt;
-        ///		&lt;h3&gt;Tax: {3}&lt;/h3&gt;
-        ///		&lt;h2&gt;Total: {4}&lt;/h3&gt;
+        ///		&lt;h3&gt;Sub-Total: $2,000.00&lt;/h3&gt;
+        ///		&lt;h3&gt;Tax: $145.00&lt;/h3&gt;
+        ///		&lt;h2&gt;Total: $2,145.00&lt;/h2&gt;
         ///	&lt;/body&gt;
         ///&lt;/html&gt;.
         /// </summary>
-        internal static string ReceiptHtml {
+        internal static string vengeEliteHtmlReceipt {
             get {
-                return ResourceManager.GetString("ReceiptHtml", resourceCulture);
+                return ResourceManager.GetString("vengeEliteHtmlReceipt", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Order Receipt for {0}
-        ///{1}
-        ///Sub-Total: {2}
-        ///Tax: {3}
-        ///Total: {4}.
+        ///   Looks up a localized string similar to Order Receipt for Anywhere Bike Shop
+        ///	1 x Specialized Venge Elite = $2,000.00
+        ///Sub-Total: $2,000.00
+        ///Tax: $145.00
+        ///Total: $2,145.00.
         /// </summary>
-        internal static string ReceiptText {
+        internal static string vengeEliteTextReceipt {
             get {
-                return ResourceManager.GetString("ReceiptText", resourceCulture);
+                return ResourceManager.GetString("vengeEliteTextReceipt", resourceCulture);
             }
         }
     }

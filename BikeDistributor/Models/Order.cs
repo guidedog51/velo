@@ -18,6 +18,7 @@ namespace BikeDistributor.Models
         public Order(ICompany company)
         {
             Company = company;
+            LineItems = new List<LineItem>();
         }
 
         /// <summary>
@@ -62,13 +63,24 @@ namespace BikeDistributor.Models
         {
             get
             {
-                return _utilities.GetReceiptText(this);
+                return _utilities.GetReceiptHtml(this);
             }
         }
 
-        public void AddLine(LineItem line)
+        /// <summary>
+        /// adds line item to collection and recalculates totals
+        /// </summary>
+        /// <param name="line"></param>
+        public void AddLineItem(LineItem item)
         {
-            LineItems.Add(line);
+            item.Discount = _utilities.GetVolumeDiscount(item);
+            item.ItemTotal = Math.Round(item.Bike.Price * item.Discount * item.Quantity, 2);
+            this.LineItems.Add(item);
+
+            this.SubTotal = Math.Round(LineItems.Sum(l => l.ItemTotal), 2);
+
+            this.Tax = Math.Round(SubTotal * _utilities.GetSalesTaxRate(this.Company.Address), 2);
+            this.Total = Math.Round(SubTotal + Tax, 2);
         }
     }
 }

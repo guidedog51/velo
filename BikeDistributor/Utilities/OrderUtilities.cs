@@ -1,5 +1,6 @@
 ﻿using BikeDistributor.Interfaces;
 using BikeDistributor.Models;
+using BikeDistributor.Properties;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,6 @@ namespace BikeDistributor.Utilities
 {
     public class OrderUtilities
     {
-
         private Dictionary<string, Dictionary<string, decimal>> _taxTable;
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace BikeDistributor.Utilities
         /// <returns></returns>
         public decimal GetSalesTaxRate(ICompanyAddress companyAddress)
         {
-            var rate = _taxTable.Where(c => c.Key == companyAddress.State).FirstOrDefault().Value
+            var rate = _taxTable.Where(s => s.Key == companyAddress.State).FirstOrDefault().Value
                 .Where(c => c.Key == companyAddress.County).FirstOrDefault().Value;
 
             return rate;
@@ -64,40 +64,12 @@ namespace BikeDistributor.Utilities
         /// <returns></returns>
         public string GetReceiptText(Order currentOrder)
         {
-            var totalAmount = 0M;
-            var result = new StringBuilder(string.Format("Order Receipt for {0}{1}", currentOrder.Company.Name, Environment.NewLine));
+            var lineItems = new StringBuilder();
             foreach (var line in currentOrder.LineItems)
-            {
-                var thisAmount = 0M;
-                //switch (line.Bike.Price)
-                //{
-                //case Bike.OneThousand:
-                //    if (line.Quantity >= 20)
-                //        thisAmount += line.Quantity * line.Bike.Price * .9d;
-                //    else
-                //        thisAmount += line.Quantity * line.Bike.Price;
-                //    break;
-                //case Bike.TwoThousand:
-                //    if (line.Quantity >= 10)
-                //        thisAmount += line.Quantity * line.Bike.Price * .8d;
-                //    else
-                //        thisAmount += line.Quantity * line.Bike.Price;
-                //    break;
-                //case Bike.FiveThousand:
-                //    if (line.Quantity >= 5)
-                //        thisAmount += line.Quantity * line.Bike.Price * .8d;
-                //    else
-                //        thisAmount += line.Quantity * line.Bike.Price;
-                //    break;
-                //}
-                result.AppendLine(string.Format("\t{0} x {1} {2} = {3}", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
-                totalAmount += thisAmount;
-            }
-            result.AppendLine(string.Format("Sub-Total: {0}", totalAmount.ToString("C")));
-            var tax = totalAmount * GetSalesTaxRate(currentOrder.Company.Address);
-            result.AppendLine(string.Format("Tax: {0}", tax.ToString("C")));
-            result.Append(string.Format("Total: {0}", (totalAmount + tax).ToString("C")));
-            return result.ToString();
+                lineItems.AppendLine(string.Format(Resources.LineItemText, line.Quantity, line.Bike.Brand, line.Bike.Model, line.ItemTotal));
+
+            var textReceipt = string.Format(Resources.ReceiptText, currentOrder.Company.Name, lineItems, currentOrder.SubTotal, currentOrder.Tax, currentOrder.Total);
+            return textReceipt;
         }
 
         /// <summary>
@@ -107,46 +79,12 @@ namespace BikeDistributor.Utilities
         /// <returns></returns>
         public string GetReceiptHtml(Order currentOrder)
         {
-            var totalAmount = 0M;
-            var result = new StringBuilder(string.Format("<html><body><h1>Order Receipt for {0}</h1>", currentOrder.Company.Name));
-            if (currentOrder.LineItems.Any())
-            {
-                result.Append("<ul>");
-                foreach (var line in currentOrder.LineItems)
-                {
-                    var thisAmount = 0M;
-                    //switch (line.Bike.Price)
-                    //{
-                    //    case Bike.OneThousand:
-                    //        if (line.Quantity >= 20)
-                    //            thisAmount += line.Quantity*line.Bike.Price*.9d;
-                    //        else
-                    //            thisAmount += line.Quantity*line.Bike.Price;
-                    //        break;
-                    //    case Bike.TwoThousand:
-                    //        if (line.Quantity >= 10)
-                    //            thisAmount += line.Quantity*line.Bike.Price*.8d;
-                    //        else
-                    //            thisAmount += line.Quantity*line.Bike.Price;
-                    //        break;
-                    //    case Bike.FiveThousand:
-                    //        if (line.Quantity >= 5)
-                    //            thisAmount += line.Quantity*line.Bike.Price*.8d;
-                    //        else
-                    //            thisAmount += line.Quantity*line.Bike.Price;
-                    //        break;
-                    //}
-                    result.Append(string.Format("<li>{0} x {1} {2} = {3}</li>", line.Quantity, line.Bike.Brand, line.Bike.Model, thisAmount.ToString("C")));
-                    totalAmount += thisAmount;
-                }
-                result.Append("</ul>");
-            }
-            result.Append(string.Format("<h3>Sub-Total: {0}</h3>", totalAmount.ToString("C")));
-            var tax = totalAmount * GetSalesTaxRate(currentOrder.Company.Address);
-            result.Append(string.Format("<h3>Tax: {0}</h3>", tax.ToString("C")));
-            result.Append(string.Format("<h2>Total: {0}</h2>", (totalAmount + tax).ToString("C")));
-            result.Append("</body></html>");
-            return result.ToString();
+            var lineItems = new StringBuilder();
+            foreach (var line in currentOrder.LineItems)
+                lineItems.AppendLine(string.Format(Resources.LineItemHtml, line.Quantity, line.Bike.Brand, line.Bike.Model, line.ItemTotal));
+
+            var htmlReceipt = string.Format(Resources.ReceiptHtml, currentOrder.Company.Name, lineItems, currentOrder.SubTotal, currentOrder.Tax, currentOrder.Total);
+            return htmlReceipt;
         }
 
     }

@@ -14,6 +14,6 @@ namespace BikeDistributor.Interfaces
         decimal Tax { get; set; }
         decimal Total { get; set; }
 
-        void AddLine(LineItem line);
+        void AddLineItem(LineItem line);
     }
 }
