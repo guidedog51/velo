@@ -14,12 +14,12 @@ namespace BikeDistributor.Utilities
         private Dictionary<string, Dictionary<string, decimal>> _taxTable;
 
         /// <summary>
-        /// Helper class for various order calculations
+        /// Helper class for various order calculations and output
         /// </summary>
         public OrderUtilities()
         {
-            var caliRates = new Dictionary<string, decimal>() { { "Alameda", 9.5M }, { "San Francisco", 8.5M } };
-            var nevadaRates = new Dictionary<string, decimal>() { { "Washoe", 9.5M }, { "Carson City", 8.5M } };
+            var caliRates = new Dictionary<string, decimal>() { { "Alameda", .095M }, { "San Francisco", .085M } };
+            var nevadaRates = new Dictionary<string, decimal>() { { "Washoe", 0M }, { "Carson City", 0M } };
             _taxTable = new Dictionary<string, Dictionary<string, decimal>>() { { "California", caliRates }, { "Nevada", nevadaRates } };
         }
 
@@ -57,7 +57,11 @@ namespace BikeDistributor.Utilities
             return rate;
         }
 
-
+        /// <summary>
+        /// generates plain text string for an order receipt
+        /// </summary>
+        /// <param name="currentOrder"></param>
+        /// <returns></returns>
         public string GetReceiptText(Order currentOrder)
         {
             var totalAmount = 0M;
@@ -96,6 +100,11 @@ namespace BikeDistributor.Utilities
             return result.ToString();
         }
 
+        /// <summary>
+        /// generates html markup for an order receipt
+        /// </summary>
+        /// <param name="currentOrder"></param>
+        /// <returns></returns>
         public string GetReceiptHtml(Order currentOrder)
         {
             var totalAmount = 0M;
