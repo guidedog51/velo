@@ -65,7 +65,7 @@ namespace BikeDistributor.Test.Properties {
         ///	&lt;body&gt;
         ///		&lt;h1&gt;Order Receipt for Anywhere Bike Shop&lt;/h1&gt;
         ///			&lt;ul&gt;
-        ///				&lt;li&gt;4 x Specialized S-Works Venge Dura-Ace = 22222.20&lt;/li&gt;
+        ///				&lt;li&gt;4 x Specialized S-Works Venge Dura-Ace @ (list price 5555.55 * discount 1.0) = 22222.20&lt;/li&gt;
         ///
         ///			&lt;/ul&gt;
         ///		&lt;h3&gt;Sub-Total: 22222.20&lt;/h3&gt;
@@ -82,7 +82,7 @@ namespace BikeDistributor.Test.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Order Receipt for Anywhere Bike Shop
-        ///\t4 x Specialized S-Works Venge Dura-Ace = 22222.20
+        ///\t4 x Specialized S-Works Venge Dura-Ace @ (list price 5555.55 * discount 1.0) = 22222.20
         ///
         ///Sub-Total: 22222.20
         ///Tax: 2111.11
@@ -99,7 +99,7 @@ namespace BikeDistributor.Test.Properties {
         ///	&lt;body&gt;
         ///		&lt;h1&gt;Order Receipt for Anywhere Bike Shop&lt;/h1&gt;
         ///			&lt;ul&gt;
-        ///				&lt;li&gt;30 x Gazelle Tour Populair = 27000.00&lt;/li&gt;
+        ///				&lt;li&gt;30 x Gazelle Tour Populair @ (list price 1000.00 * discount 0.9) = 27000.00&lt;/li&gt;
         ///
         ///			&lt;/ul&gt;
         ///		&lt;h3&gt;Sub-Total: 27000.00&lt;/h3&gt;
@@ -116,7 +116,7 @@ namespace BikeDistributor.Test.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Order Receipt for Anywhere Bike Shop
-        ///\t30 x Gazelle Tour Populair = 27000.00
+        ///\t30 x Gazelle Tour Populair @ (list price 1000.00 * discount 0.9) = 27000.00
         ///
         ///Sub-Total: 27000.00
         ///Tax: 2565.00

@@ -9,9 +9,9 @@ namespace BikeDistributor.Test
     [TestClass]
     public class OrderTest
     {
-        private readonly static IBike Defy = new Bike { Brand = "Giant", Model = "Defy 1", Price = 1000.00M };   // ("Giant", "Defy 1", 1000);
-        private readonly static IBike Elite = new Bike { Brand = "Specialized", Model = "Venge Elite", Price = 2010.00M };   //   //("Specialized", "Venge Elite", 2010);
-        private readonly static IBike DuraAce = new Bike { Brand = "Specialized", Model = "S-Works Venge Dura-Ace", Price = 5555.55M };   //("Specialized", "S-Works Venge Dura-Ace", 5555);
+        private readonly static IBike Defy = new Bike { Brand = "Giant", Model = "Defy 1", Price = 1000.00M }; 
+        private readonly static IBike Elite = new Bike { Brand = "Specialized", Model = "Venge Elite", Price = 2010.00M }; 
+        private readonly static IBike DuraAce = new Bike { Brand = "Specialized", Model = "S-Works Venge Dura-Ace", Price = 5555.55M }; 
         private readonly static IBike Tour = new Bike { Brand = "Gazelle", Model = "Tour Populair", Price = 1000.00M };
         private readonly static ICompanyAddress _address = new CompanyAddress { State = "California", County = "Alameda" }; 
         private readonly static IOrder _order = new Order(new Company(_address, "Anywhere Bike Shop"));                                                                                                                                 //var bike = new Bike { Brand = "Gazelle", Model = "Tour Populair", Price = 1000 };

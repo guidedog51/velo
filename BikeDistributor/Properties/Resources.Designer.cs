@@ -61,7 +61,7 @@ namespace BikeDistributor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;li&gt;{0} x {1} {2} = {3}&lt;/li&gt;.
+        ///   Looks up a localized string similar to &lt;li&gt;{0} x {1} {2} @ (list price {3} * discount {4}) = {5}&lt;/li&gt;.
         /// </summary>
         internal static string LineItemHtml {
             get {
@@ -70,7 +70,7 @@ namespace BikeDistributor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \t{0} x {1} {2} = {3}.
+        ///   Looks up a localized string similar to \t{0} x {1} {2} @ (list price {3} * discount {4}) = {5}.
         /// </summary>
         internal static string LineItemText {
             get {

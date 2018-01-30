@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LineItemHtml" xml:space="preserve">
-    <value>&lt;li&gt;{0} x {1} {2} = {3}&lt;/li&gt;</value>
+    <value>&lt;li&gt;{0} x {1} {2} @ (list price {3} * discount {4}) = {5}&lt;/li&gt;</value>
   </data>
   <data name="LineItemText" xml:space="preserve">
-    <value>\t{0} x {1} {2} = {3}</value>
+    <value>\t{0} x {1} {2} @ (list price {3} * discount {4}) = {5}</value>
   </data>
   <data name="ReceiptHtml" xml:space="preserve">
     <value>&lt;html&gt;

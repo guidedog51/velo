@@ -66,7 +66,7 @@ namespace BikeDistributor.Utilities
         {
             var lineItems = new StringBuilder();
             foreach (var line in currentOrder.LineItems)
-                lineItems.AppendLine(string.Format(Resources.LineItemText, line.Quantity, line.Bike.Brand, line.Bike.Model, line.ItemTotal));
+                lineItems.AppendLine(string.Format(Resources.LineItemText, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Bike.Price, this.GetVolumeDiscount(line), line.ItemTotal));
 
             var textReceipt = string.Format(Resources.ReceiptText, currentOrder.Company.Name, lineItems, currentOrder.SubTotal, currentOrder.Tax, currentOrder.Total);
             return textReceipt;
@@ -81,7 +81,7 @@ namespace BikeDistributor.Utilities
         {
             var lineItems = new StringBuilder();
             foreach (var line in currentOrder.LineItems)
-                lineItems.AppendLine(string.Format(Resources.LineItemHtml, line.Quantity, line.Bike.Brand, line.Bike.Model, line.ItemTotal));
+                lineItems.AppendLine(string.Format(Resources.LineItemHtml, line.Quantity, line.Bike.Brand, line.Bike.Model, line.Bike.Price, this.GetVolumeDiscount(line), line.ItemTotal));
 
             var htmlReceipt = string.Format(Resources.ReceiptHtml, currentOrder.Company.Name, lineItems, currentOrder.SubTotal, currentOrder.Tax, currentOrder.Total);
             return htmlReceipt;
