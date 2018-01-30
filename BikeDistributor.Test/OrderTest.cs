@@ -37,7 +37,6 @@ namespace BikeDistributor.Test
             _order.LineItems.Clear();
         }
 
-
         [TestMethod]
         public void GetSalesTaxRate()
         {
@@ -106,8 +105,6 @@ namespace BikeDistributor.Test
             Assert.AreEqual(Resources.TourHtmlReceipt, _order.ReceiptHtml);
             _order.LineItems.Clear();
         }
-
-        private const string HtmlResultStatementOneDefy = @"<html><body><h1>Order Receipt for Anywhere Bike Shop</h1><ul><li>1 x Giant Defy 1 = $1,000.00</li></ul><h3>Sub-Total: $1,000.00</h3><h3>Tax: $72.50</h3><h2>Total: $1,072.50</h2></body></html>";
 
         [TestMethod]
         public void HtmlReceiptOneDuraAce()

@@ -10,7 +10,7 @@ namespace BikeDistributor.Models
 {
     public class Order : IOrder
     {
-        OrderUtilities _utilities = new OrderUtilities();
+        OrderUtilities _utilities = new OrderUtilities();   //TOODO: set up interface and unity container to inject orderutilities instance into class
         /// <summary>
         /// this class defines an order for wholesale bike purchases
         /// </summary>
