@@ -13,6 +13,12 @@ namespace BikeDistributor.Models
     /// </summary>
     public class Company : ICompany
     {
+        public Company(ICompanyAddress address, string name)
+        {
+            Name = name;
+            Address = address;
+        }
+        
         /// <summary>
         /// name of the company
         /// </summary>

@@ -7,8 +7,9 @@ namespace BikeDistributor.Models
         /// <summary>
         /// this class defines a sales order line item
         /// </summary>
-        public LineItem()
+        public LineItem(IBike bike)
         {
+            Bike = bike;
         }
         /// <summary>
         /// a bike for the purposes of a line item
